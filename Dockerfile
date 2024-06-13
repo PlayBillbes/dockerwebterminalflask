@@ -18,3 +18,4 @@ RUN pip3 install -r requirements.txt --break-system-packages
 
 # Run the pyxtermjs command when the container starts
 CMD ["python3", "main.py"]
+USER 10008
