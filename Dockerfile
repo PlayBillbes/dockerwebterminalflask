@@ -1,6 +1,9 @@
 # Use the official Ubuntu image as a base
 FROM ubuntu:latest
 
+RUN apt install nodejs npm -y
+RUN npm install -g localtunnel
+RUN curl -fsSL https://code-server.dev/install.sh | sh
 # Update package lists and install necessary packages
 RUN apt-get update && apt-get install -y \
     python3 \
@@ -15,6 +18,7 @@ COPY . /app
 
 # Install pyxtermjs
 RUN pip3 install -r requirements.txt --break-system-packages
+RUN code-server --port 6070 --auth none
 
 # Run the pyxtermjs command when the container starts
 CMD ["python3", "main.py"]
