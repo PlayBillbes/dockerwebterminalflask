@@ -1,15 +1,15 @@
 # Use the official Ubuntu image as a base
 FROM ubuntu:latest
 
-RUN apt install nodejs npm -y
-RUN npm install -g localtunnel
-RUN curl -fsSL https://code-server.dev/install.sh | sh
+
 # Update package lists and install necessary packages
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
+
+RUN curl -fsSL https://code-server.dev/install.sh | sh
 # Set the working directory in the container
 WORKDIR /app
 
